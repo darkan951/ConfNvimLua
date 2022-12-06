@@ -1,4 +1,18 @@
-vim.cmd [[:PackerSync]]
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
+vim.cmd([[
+  autocmd VimEnter * ++nested 20vsplit term://debian
+  autocmd VimEnter * ++nested tnoremap <Esc> <C-\><C-n>
+]])
+
+vim.cmd([[
+  autocmd VimEnter * ++nested NvimTreeOpen E:\PERSO
+]])
 
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -50,5 +64,3 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
-
-vim.cmd [[:NvimTreeToggle]]
